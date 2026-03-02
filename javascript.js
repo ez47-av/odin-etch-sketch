@@ -1,9 +1,12 @@
 let grid = document.querySelector(".grid");
+let gridSize = 16;
 const modal = document.querySelector(".modal");
-const btnReset = document.querySelector(".reset-colors");
 const btnOpen = document.querySelector(".open-modal");
 const btnClose = document.querySelector(".close");
-let gridSize = 16;
+const input = document.querySelector("#grid-input");
+const btnSubmit = document.querySelector("#grid-submit");
+const btnReset = document.querySelector(".reset-colors");
+
 
 function createGrid(size) {
   const width = 1 / size * 100;
@@ -43,21 +46,18 @@ btnReset.addEventListener("click", () => {
 // opens the modal
 btnOpen.addEventListener("click", () => {
   modal.style.display = "block";
+})
 
-  const input = document.querySelector("#grid-input");
-  const submitBtn = document.querySelector("#grid-submit");
-
-  submitBtn.addEventListener("click", (e) =>{
-    e.preventDefault();
+btnSubmit.addEventListener("click", (e) =>{
+  e.preventDefault();
     
-    if (input.value > 0 && input.value <= 100) {
-      console.log(input.value);
-      gridSize = input.value;
-      resetGrid();
-      createGrid(gridSize);
-      closeModal();
-    }
-  })
+  if (input.value > 0 && input.value <= 100) {
+    console.log(input.value);
+    gridSize = input.value;
+    resetGrid();
+    createGrid(gridSize);
+    closeModal();
+  }
 })
 
 btnClose.addEventListener("click", closeModal);
