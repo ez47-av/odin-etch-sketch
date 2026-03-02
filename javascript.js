@@ -47,9 +47,8 @@ btnOpen.addEventListener("click", () => {
 btnSubmit.addEventListener("click", (e) =>{
   e.preventDefault();
     
-  if (input.value > 0 && input.value <= 100) {
-    console.log(input.value);
-    gridSize = input.value;
+  if (Math.floor(input.value) > 0 && input.value <= 100) {
+    gridSize = Math.floor(input.value);
     resetGrid();
     createGrid(gridSize);
     closeModal();
