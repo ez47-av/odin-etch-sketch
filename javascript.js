@@ -23,10 +23,7 @@ function createDiv(width) {
 }
 
 function resetGrid() {
-  let temp = grid.cloneNode();
-  grid.parentNode.appendChild(temp);
-  grid.remove();
-  grid = temp;
+  grid.textContent = ''
 }
 
 function onHover(e) {
