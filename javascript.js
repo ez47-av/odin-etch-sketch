@@ -1,11 +1,18 @@
-const grid = document.querySelector(".grid");
-const defaultSize = 16;
+let grid = document.querySelector(".grid");
+const modal = document.querySelector(".modal");
+const btn = document.querySelector(".open-modal");
+const btnClose = document.querySelector(".close");
+let gridSize = 16;
 
 function createGrid(size) {
   const width = 1 / size * 100;
   for (let i = 0; i < size*size; i++) {
     createDiv(width);
   }
+
+  grid.addEventListener("mouseover", (e)=> {
+    e.target.classList.add("active");
+  })
 }
 
 function createDiv(width) {
@@ -14,8 +21,37 @@ function createDiv(width) {
   grid.appendChild(div);
 }
 
-createGrid(defaultSize);
+function resetGrid() {
+  let temp = grid.cloneNode();
+  grid.parentNode.appendChild(temp);
+  grid.remove();
+  grid = temp;
+}
 
-grid.addEventListener("mouseover", (e)=> {
-  e.target.classList.add("active");
+createGrid(gridSize);
+
+// opens the modal
+btn.addEventListener("click", () => {
+  modal.style.display = "block";
+
+  const input = document.querySelector("#grid-input");
+  const submitBtn = document.querySelector("#grid-submit");
+
+  submitBtn.addEventListener("click", (e) =>{
+    e.preventDefault();
+    
+    if (input.value > 0 && input.value <= 100) {
+      console.log(input.value);
+      gridSize = input.value;
+      resetGrid();
+      createGrid(gridSize);
+      closeModal();
+    }
+  })
 })
+
+btnClose.addEventListener("click", closeModal);
+
+function closeModal() {
+  modal.style.display = "none";
+}
