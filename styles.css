@@ -1,9 +1,14 @@
-.container {
+.grid {
   display: flex;
   flex-wrap: wrap;
 }
 
-.container div {
+.grid div {
   box-sizing: border-box;
   border: 1px solid red;
+  aspect-ratio: 1/1;
+}
+
+.active {
+  background-color: black;
 }
