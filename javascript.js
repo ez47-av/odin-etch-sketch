@@ -3,13 +3,18 @@ const div = document.createElement("div");
 const gridSize = 16;
 
 function createGrid(size) {
-  for (let i = 0; i < size*size; i++) {
-    const div = document.createElement("div");
-    container.appendChild(div);
-  }
+  const width = 1 / size * 100;
 
-  const temp = document.querySelectorAll("div");
-  console.log(temp);
+  for (let i = 0; i < size*size; i++) {
+    createDiv(width);
+  }
+}
+
+function createDiv(width) {
+  const div = document.createElement("div");
+  div.style.flexBasis = `${width}%`;
+  div.style.aspectRatio = "1 / 1";
+  container.appendChild(div);
 }
 
 createGrid(gridSize);
