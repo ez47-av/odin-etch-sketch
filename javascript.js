@@ -12,8 +12,7 @@ function createGrid(size) {
   const width = 1 / size * 100;
   for (let i = 0; i < size*size; i++) {
     createDiv(width);
-  }
-  grid.addEventListener("mouseover", onHover);
+  }  
 }
 
 function createDiv(width) {
@@ -26,13 +25,13 @@ function resetGrid() {
   grid.textContent = ''
 }
 
-function onHover(e) {
+createGrid(gridSize);
+
+grid.addEventListener("mouseover", (e) => {
   if (!e.target.classList.contains("grid")) {
     e.target.classList.add("active");
   }
-}
-
-createGrid(gridSize);
+});
 
 // resets the grid back to white
 btnReset.addEventListener("click", () => {
