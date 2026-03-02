@@ -50,7 +50,6 @@ body {
   width: 400px;
 }
 
-
 .close:hover{
   cursor: pointer;
 }
@@ -61,5 +60,5 @@ body {
 }
 
 #grid-input:invalid {
-  border-color:red; /* Sets a red border */
+  border-color:red;
 }
