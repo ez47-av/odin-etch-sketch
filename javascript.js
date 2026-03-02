@@ -1,6 +1,7 @@
 let grid = document.querySelector(".grid");
 const modal = document.querySelector(".modal");
-const btn = document.querySelector(".open-modal");
+const btnReset = document.querySelector(".reset-colors");
+const btnOpen = document.querySelector(".open-modal");
 const btnClose = document.querySelector(".close");
 let gridSize = 16;
 
@@ -9,10 +10,7 @@ function createGrid(size) {
   for (let i = 0; i < size*size; i++) {
     createDiv(width);
   }
-
-  grid.addEventListener("mouseover", (e)=> {
-    e.target.classList.add("active");
-  })
+  grid.addEventListener("mouseover", onHover);
 }
 
 function createDiv(width) {
@@ -28,10 +26,22 @@ function resetGrid() {
   grid = temp;
 }
 
+function onHover(e) {
+  if (!e.target.classList.contains("grid")) {
+    e.target.classList.add("active");
+  }
+}
+
 createGrid(gridSize);
 
+// resets the grid back to white
+btnReset.addEventListener("click", () => {
+  resetGrid();
+  createGrid(gridSize);
+})
+
 // opens the modal
-btn.addEventListener("click", () => {
+btnOpen.addEventListener("click", () => {
   modal.style.display = "block";
 
   const input = document.querySelector("#grid-input");
